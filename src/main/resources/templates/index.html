@@ -17,10 +17,21 @@
         <div class="card" style="width: 18rem;">
             <img src="" th:src="@{/img/bumblebee.jpg}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Witam</h5>
                 <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid ea enim facilis necessitatibus! Commodi cupiditate impedit ipsum nulla rerum soluta voluptatem? Adipisci, amet aperiam consequuntur necessitatibus nihil perspiciatis praesentium ullam.
+                    Dzień dobry, witaj na stronie Piotra.
                 </p>
+                <div class="card-footer">
+                    Opcje:
+                    <ol>
+                        <li>
+                            <a th:href="@{/customers}">Przeglądaj customerów</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/customers/byId?id=2}">Przeglądaj customerów po id</a>
+                        </li>
+                    </ol>
+                </div>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
