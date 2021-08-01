@@ -1,0 +1,6 @@
+
+.errorPageMessage{
+    color: orangered;
+    border-style: solid;
+    border-radius: 10%;
+}

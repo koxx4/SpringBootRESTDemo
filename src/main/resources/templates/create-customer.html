@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Customer</title>
+</head>
+<body>
+    <h5>Create Customer</h5>
+
+    <table>
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Ip Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <form action="#" method="post" th:action="@{createCustomer}" th:object="${customerToAdd}">
+                    <td>
+                        <input type="text" th:field="*{firstName}"/>
+                    </td>
+                    <td>
+                        <input type="text" th:field="*{lastName}"/>
+                    </td>
+                    <td>
+                        <input type="text" th:field="*{email}"/>
+                    </td>
+                    <td>
+                        <select th:field="*{gender}">
+                            <option th:value="'Male'">Male</option>
+                            <option th:value="'Female'">Female</option>
+                            <option th:value="'Non-Binary'">Non-Binary</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" th:field="*{ipAddress}"/>
+                    </td>
+                    <td>
+                        <input type="submit" value="Confirm"/>
+                    </td>
+                </form>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul th:if="${#fields.hasErrors('${customerToAdd.*}')}">
+        There were some errors amigo:
+        <li th:each=" err : ${#fields.errors('${customerToAdd.*}')}" th:text="${err}"></li>
+    </ul>
+
+</body>
+</html>
