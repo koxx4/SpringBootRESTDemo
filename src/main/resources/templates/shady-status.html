@@ -12,9 +12,10 @@
     <title>Shady status</title>
 </head>
 <body class="bg-secondary">
+<a href="#" th:href="|${#request.requestURI}/addForm|">Manage</a>
 
-    <div class="container g-2">
-            <div class="row mb-3" th:each="page : ${pagedDogStatuses}">
+    <div class="container g-2 p-2">
+            <div class="row mb-3 g-2" th:each="page : ${pagedDogStatuses}">
                 <div class="col" th:each="status : ${pageStat.current}">
                     <div class="card">
                         <div class="card-body">
