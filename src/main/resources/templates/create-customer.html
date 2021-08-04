@@ -3,54 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <title>Create Customer</title>
+    <link href="/static/css/bootstrap/bootstrap.min.css" th:href="@{/css/bootstrap/bootstrap.min.css}" rel="stylesheet"/>
 </head>
-<body>
-    <h5>Create Customer</h5>
+<body class="bg-secondary">
 
-    <table>
-        <thead>
-            <tr>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Email</th>
-                <th>Gender</th>
-                <th>Ip Address</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <form action="#" method="post" th:action="@{createCustomer}" th:object="${customerToAdd}">
-                    <td>
-                        <input type="text" th:field="*{firstName}"/>
-                    </td>
-                    <td>
-                        <input type="text" th:field="*{lastName}"/>
-                    </td>
-                    <td>
-                        <input type="text" th:field="*{email}"/>
-                    </td>
-                    <td>
-                        <select th:field="*{gender}">
-                            <option th:value="'Male'">Male</option>
-                            <option th:value="'Female'">Female</option>
-                            <option th:value="'Non-Binary'">Non-Binary</option>
-                        </select>
-                    </td>
-                    <td>
-                        <input type="text" th:field="*{ipAddress}"/>
-                    </td>
-                    <td>
-                        <input type="submit" value="Confirm"/>
-                    </td>
-                </form>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <h3 class="text-center card-header">Create Customer</h3>
+                    <div class="card-body">
+                        <form action="#" method="post" th:action="@{create}" th:object="${customerToAdd}">
+                            <div class="mb-3 px-3">
+                                <label for="cFirstName" class="form-label">Customer's first name</label>
+                                <input type="text" th:field="*{firstName}" id="cFirstName" class="form-control"
+                                       th:classappend="${#fields.hasErrors('firstName')}? is-invalid"/>
+                                <div class="invalid-feedback" th:each="err : ${#fields.errors('firstName')}"
+                                     th:text="${err}">error</div>
+                            </div>
+                            <div class="mb-3 px-3">
+                                <label for="cLastName" class="form-label">Customer's last name</label>
+                                <input type="text" th:field="*{lastName}" id="cLastName" class="form-control"
+                                       th:classappend="${#fields.hasErrors('lastName')}? is-invalid"/>
+                                <div class="invalid-feedback" th:each="err : ${#fields.errors('lastName')}"
+                                     th:text="${err}">error</div>
+                            </div>
+                            <div class="mb-3 px-3">
+                                <label for="cEmail" class="form-label">Customer's email</label>
+                                <input type="email" th:field="*{email}" id="cEmail" class="form-control"/>
+                            </div>
+                            <div class="mb-3 px-3">
+                                <label for="cGender" class="form-label">Customer's gender</label>
+                                <select th:field="*{gender}" class="form-select" id="cGender">
+                                    <option th:value="'Male'" class="form-op" selected>Male</option>
+                                    <option th:value="'Female'">Female</option>
+                                    <option th:value="'Non-Binary'">Non-Binary</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 px-3">
+                                <label for="cIp" class="form-label">Customer's IP Address</label>
+                                <input type="text" th:field="*{ipAddress}" id="cIp" class="form-control"
+                                       th:classappend="${#fields.hasErrors('ipAddress')}? is-invalid"/>
+                                <div class="form-text">We will never use this information for evil purposes</div>
+                                <div class="invalid-feedback" th:each="err : ${#fields.errors('lastName')}"
+                                     th:text="${err}">error</div>
+                            </div>
+                            <div class="mb-3 px-3">
+                                <input type="submit" value="Confirm" class="btn btn-primary"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer text-secondary" th:text="${randomFact}">
+                        Random fact
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <ul th:if="${#fields.hasErrors('${customerToAdd.*}')}">
-        There were some errors amigo:
-        <li th:each=" err : ${#fields.errors('${customerToAdd.*}')}" th:text="${err}"></li>
-    </ul>
-
+    <script src="/static/js/bootstrap/bootstrap.bundle.min.js" th:src="@{/js/bootstrap/bootstrap.bundle.min.js}" type="javascript"></script>
 </body>
 </html>

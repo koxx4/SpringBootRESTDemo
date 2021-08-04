@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create dog status</title>
+    <link href="/static/css/bootstrap/bootstrap.min.css" th:href="@{/css/bootstrap/bootstrap.min.css}" rel="stylesheet"/>
+</head>
+<body class="bg-secondary">
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <h3 class="text-center card-header">Create dog status</h3>
+                <div class="card-body">
+                    <form action="#" method="post" th:action="@{submitStatus}" th:object="${newStatus}">
+                        <div class="mb-3 px-3">
+                            <label for="dMsg" class="form-label">Status message</label>
+                            <input type="text" th:field="*{message}" id="dMsg" class="form-control"/>
+                        </div>
+                        <div class="mb-3 px-3">
+                            <label for="dDate" class="form-label">Date</label>
+                            <input type="date" th:field="*{date}" id="dDate" class="form-control"/>
+                        </div>
+                        <div class="mb-3 px-3">
+                            <label for="dTime" class="form-label">Timestamp</label>
+                            <input type="time" th:field="*{time}" id="dTime" class="form-control"/>
+                        </div>
+
+                        <div class="mb-3 px-3 ms-4">
+                            <div th:each="medicine : *{medicines}">
+                                <label th:for="|medicine${medicineStat.index}|" class="form-label">
+                                    Medicine name
+                                </label>
+                                <input th:field="*{medicines[__${medicineStat.index}__].name}"
+                                       type="text" class="form-control"
+                                       th:id="|medicine${medicineStat.index}|"/>
+                                <label th:for="|medicineDose${medicineStat.index}|" class="form-label">
+                                    Dose
+                                </label>
+                                <input th:field="*{medicines[__${medicineStat.index}__].dose}"
+                                       type="text" class="form-control"
+                                       th:id="|medicineDose${medicineStat.index}|"/>
+                            </div>
+                        </div>
+                        <div class="mb-3 px-3 ms-4">
+                            <button name="addMedicineField" type="submit" class="btn btn-warning">Add medicine</button>
+                        </div>
+                        <div class="mb-3 px-3 float-end">
+                            <input type="submit" value="Confirm" class="btn btn-primary"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/bootstrap/bootstrap.bundle.min.js" th:src="@{/js/bootstrap/bootstrap.bundle.min.js}" type="javascript"></script>
+</body>
+</html>

@@ -2,6 +2,7 @@ package com.koxx4.springbootrestdemo.mvc.controllers;
 
 
 import com.koxx4.springbootrestdemo.data.Customer;
+import com.koxx4.springbootrestdemo.fun.RandomFactProvider;
 import com.koxx4.springbootrestdemo.repository.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,15 +21,19 @@ public class CustomersController {
     @Qualifier("defaultCustomerService")
     private CustomerService customerService;
 
-    @RequestMapping()
+    @Autowired
+    @Qualifier("hardcodedFactProvider")
+    private RandomFactProvider randomFactProvider;
+
+    @RequestMapping("/list")
     private String showListOfCustomers(Model model){
         var allCustomers = customerService.getAllCustomers();
         model.addAttribute("allCustomers", allCustomers);
 
-        return "customers";
+        return "customers-list";
     }
 
-    @GetMapping("/byId")
+    @GetMapping("/search")
     private String showCustomerById(@RequestParam("id") int id, Model model){
 
         var customer = customerService.getCustomerById(id);
@@ -37,23 +42,26 @@ public class CustomersController {
         return "customer-details";
     }
 
-    @RequestMapping("/createCustomerForm")
+    @RequestMapping("/createForm")
     private String showCreateCustomerForm(Model model){
         model.addAttribute("customerToAdd", new Customer());
+        model.addAttribute("randomFact", randomFactProvider.getRandomFact());
         return "create-customer";
     }
 
-    @PostMapping("/createCustomer")
+    @PostMapping("/create")
     private String createCustomer(@ModelAttribute("customerToAdd") @Valid Customer customer,
-                                  BindingResult bindingResult){
+                                  BindingResult bindingResult, Model model){
 
-        if(bindingResult.hasErrors())
+        if(bindingResult.hasErrors()) {
+            model.addAttribute("randomFact", randomFactProvider.getRandomFact());
             return "create-customer";
+        }
 
 
         customerService.addCustomer(customer);
 
-        return "redirect:/";
+        return "redirect:list";
     }
 
 

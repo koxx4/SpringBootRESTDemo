@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!-- Bootstrap CSS -->
+    <link href="/static/css/bootstrap/bootstrap.min.css" th:href="@{/css/bootstrap/bootstrap.min.css}" rel="stylesheet"/>
+
+    <title>Koxx4 Website</title>
+</head>
+<body class="bg-secondary">
+
+    <table class="table table-secondary table-striped table-hover">
+        <thead>
+            <tr class="table-success text-center sticky-top">
+                <th scope="col">#</th>
+                <th scope="col">First name</th>
+                <th scope="col">Last name</th>
+                <th scope="col">Email address</th>
+                <th scope="col">Gender</th>
+                <th scope="col">IP Address</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center" th:each="customer : ${allCustomers}">
+                <th scope="row" th:text="${customer.id}">1.</th>
+                <td th:text="${customer.firstName}">FIRST NAME</td>
+                <td th:text="${customer.lastName}">LAST NAME</td>
+                <td th:text="${customer.email}">EMAIL</td>
+                <td th:text="${customer.gender}">GENDER</td>
+                <td th:text="${customer.ipAddress}">IP</td>
+                <td>
+                    <a href="#" th:href="@{delete(id=${customer.id})}" class="btn btn-outline-danger m-1">Delete</a>
+                    <a href="#" th:href="@{edit(id=${customer.id})}" class="btn btn-warning">Edit</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="/static/js/bootstrap/bootstrap.bundle.min.js" th:src="@{/js/bootstrap/bootstrap.bundle.min.js}" type="javascript"></script>
+</body>
+
+
+</html>
