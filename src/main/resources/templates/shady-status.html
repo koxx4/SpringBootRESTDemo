@@ -12,7 +12,7 @@
     <title>Shady status</title>
 </head>
 <body class="bg-secondary">
-<a href="#" th:href="|${#request.requestURI}/addForm|">Manage</a>
+<a class="btn btn-warning m-2 float-end" href="#" th:href="|${#request.requestURI}/addForm|">Manage</a>
 
     <div class="container g-2 p-2">
             <div class="row mb-3 g-2" th:each="page : ${pagedDogStatuses}">

@@ -33,4 +33,12 @@ public class DefaultCustomerRepository implements CustomerRepository{
     public void addCustomer(Customer customer) {
         entityManager.persist(customer);
     }
+
+    @Override
+    public void deleteCustomerById(int id) {
+        entityManager
+                .createQuery("DELETE FROM Customer WHERE id=:id")
+                .setParameter("id", id)
+                .executeUpdate();
+    }
 }

@@ -33,4 +33,10 @@ public class DefaultCustomerService implements CustomerService{
     public void addCustomer(Customer customer) {
         customerRepository.addCustomer(customer);
     }
+
+    @Transactional
+    @Override
+    public void deleteCustomerById(int id) {
+        customerRepository.deleteCustomerById(id);
+    }
 }

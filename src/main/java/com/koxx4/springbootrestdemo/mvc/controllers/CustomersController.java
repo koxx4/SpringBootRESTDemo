@@ -64,6 +64,12 @@ public class CustomersController {
         return "redirect:list";
     }
 
+    @GetMapping("/delete")
+    private String deleteCustomer(@RequestParam("id") Integer customerId){
+        customerService.deleteCustomerById(customerId);
+        return "redirect:list";
+    }
+
 
     @ExceptionHandler(Exception.class)
     private String showCustomerErrorPage(){
