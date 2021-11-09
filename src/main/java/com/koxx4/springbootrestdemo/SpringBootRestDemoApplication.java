@@ -19,24 +19,4 @@ public class SpringBootRestDemoApplication {
 		}, args);
 	}
 
-//	@Bean
-//	public UserDetailsManager userDetailsManager(){
-//		var userDetailsManager = new InMemoryUserDetailsManager();
-//
-//		userDetailsManager.createUser(User.withUsername("koxx4")
-//				.password("password")
-//				.roles("admin")
-//				.build());
-//
-//
-//		return userDetailsManager;
-//	}
-//
-//	@Bean
-//	public PasswordEncoder passwordEncoder(){
-//		return NoOpPasswordEncoder.getInstance();
-//	}
-
-
-
 }

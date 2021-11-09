@@ -16,7 +16,8 @@ public class HttpSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic();
         http.authorizeRequests()
-                .antMatchers("/shady/status/**").hasRole("ADMIN")
+                .antMatchers("/shady/status/addForm").hasRole("ADMIN")
+                .antMatchers("/shady/status/submitStatus").hasRole("ADMIN")
                 .anyRequest().permitAll();
     }
 }
