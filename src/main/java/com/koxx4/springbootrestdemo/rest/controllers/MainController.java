@@ -10,6 +10,7 @@ public class MainController {
 
     @GetMapping("/hello")
     private String handleGetHelloService(){
+
         return "Hello rest world!";
     }
 

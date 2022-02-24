@@ -1,4 +1,4 @@
-package com.koxx4.springbootrestdemo.fun;
+package com.koxx4.springbootrestdemo.services;
 
 import org.springframework.stereotype.Component;
 

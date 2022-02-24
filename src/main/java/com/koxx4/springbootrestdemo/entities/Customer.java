@@ -1,4 +1,4 @@
-package com.koxx4.springbootrestdemo.data;
+package com.koxx4.springbootrestdemo.entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

@@ -1,6 +1,7 @@
 package com.koxx4.springbootrestdemo.security.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.User;
@@ -14,19 +15,22 @@ import javax.sql.DataSource;
 @Configuration
 public class MainSecurityConfig {
 
+    @Value("${admin.pass}")
+    CharSequence adminPassword;
+
     @Bean
     public UserDetailsService userDetailsService(@Autowired DataSource dataSource){
         JdbcUserDetailsManager userDetailsManager = new JdbcUserDetailsManager(dataSource);
-        userDetailsManager.setUsersByUsernameQuery("SELECT nick_name,password,enabled FROM AppUsers" +
-                " WHERE nick_name = ?");
-        userDetailsManager.setAuthoritiesByUsernameQuery("SELECT nick_name,authority FROM authorities" +
-                " WHERE nick_name = ?");
-        userDetailsManager.setCreateUserSql("INSERT INTO AppUsers(nick_name,password,enabled) VALUES " +
+        userDetailsManager.setUsersByUsernameQuery("SELECT nickname,password,enabled FROM appUser" +
+                " WHERE nickname = ?");
+        userDetailsManager.setAuthoritiesByUsernameQuery("SELECT nickname,authority FROM authorities" +
+                " WHERE nickname = ?");
+        userDetailsManager.setCreateUserSql("INSERT INTO appUser(nickname,password,enabled) VALUES " +
                 "(?,?,?)");
-        userDetailsManager.setCreateAuthoritySql("INSERT INTO authorities (nick_name,authority) VALUES (?,?)");
+        userDetailsManager.setCreateAuthoritySql("INSERT INTO authorities (nickname,authority) VALUES (?,?)");
 
         userDetailsManager.createUser(User.withUsername("koxx4")
-                .password(passwordEncoder().encode("zemir555"))
+                .password(passwordEncoder().encode(adminPassword))
                 .roles("ADMIN").build());
 
         return userDetailsManager;

@@ -1,8 +1,8 @@
 package com.koxx4.springbootrestdemo.mvc.controllers;
 
 
-import com.koxx4.springbootrestdemo.data.Customer;
-import com.koxx4.springbootrestdemo.fun.RandomFactProvider;
+import com.koxx4.springbootrestdemo.entities.Customer;
+import com.koxx4.springbootrestdemo.services.RandomFactProvider;
 import com.koxx4.springbootrestdemo.repository.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

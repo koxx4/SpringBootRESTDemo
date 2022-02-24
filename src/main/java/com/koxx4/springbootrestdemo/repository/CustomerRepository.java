@@ -1,6 +1,6 @@
 package com.koxx4.springbootrestdemo.repository;
 
-import com.koxx4.springbootrestdemo.data.Customer;
+import com.koxx4.springbootrestdemo.entities.Customer;
 
 import java.util.List;
 

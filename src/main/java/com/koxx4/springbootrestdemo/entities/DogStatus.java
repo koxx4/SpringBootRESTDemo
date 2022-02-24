@@ -1,12 +1,9 @@
-package com.koxx4.springbootrestdemo.data;
+package com.koxx4.springbootrestdemo.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Time;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;

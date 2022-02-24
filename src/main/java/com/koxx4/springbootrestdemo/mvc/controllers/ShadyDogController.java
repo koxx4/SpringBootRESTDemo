@@ -1,17 +1,14 @@
 package com.koxx4.springbootrestdemo.mvc.controllers;
 
-import com.koxx4.springbootrestdemo.data.DogMedicine;
-import com.koxx4.springbootrestdemo.data.DogStatus;
+import com.koxx4.springbootrestdemo.entities.DogMedicine;
+import com.koxx4.springbootrestdemo.entities.DogStatus;
 import com.koxx4.springbootrestdemo.repository.DogStatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.request.WebRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,20 +46,17 @@ public class ShadyDogController {
         var newDogStatus = new DogStatus();
         newDogStatus.setMedicines(new ArrayList<>());
         model.addAttribute("newStatus", newDogStatus);
-
         return "shady-add-status-form";
     }
 
     @PostMapping("/status/submitStatus")
     private String addDogStatus(@ModelAttribute("newStatus") DogStatus statusToAdd){
-
         dogRepository.save(statusToAdd);
         return "redirect:/shady/status";
     }
 
     @PostMapping(value = "/status/submitStatus", params = {"addMedicineField"})
     private String addMedicineField(@ModelAttribute("newStatus") DogStatus editedStatus){
-
         editedStatus.addMedicine(new DogMedicine());
         return "shady-add-status-form";
     }

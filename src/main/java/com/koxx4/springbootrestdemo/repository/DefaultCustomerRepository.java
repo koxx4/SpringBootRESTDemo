@@ -1,7 +1,7 @@
 package com.koxx4.springbootrestdemo.repository;
 
 
-import com.koxx4.springbootrestdemo.data.Customer;
+import com.koxx4.springbootrestdemo.entities.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
