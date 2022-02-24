@@ -14,7 +14,7 @@
 	<name>SpringBootRESTDemo</name>
 	<description>SpringBootRESTDemo</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -41,7 +41,7 @@
 		<dependency>
 			<groupId>org.mariadb.jdbc</groupId>
 			<artifactId>mariadb-java-client</artifactId>
-			<version>2.7.3</version>
+			<version>3.0.3</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
@@ -102,5 +102,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
